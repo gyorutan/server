@@ -32,11 +32,6 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-      commentNumber : {
-        type: Number,
-        unique: true,
-        default: 0,
-      }
     },
   ],
   created_at: {
@@ -48,11 +43,6 @@ const postSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  postNumber: {
-    type: Number,
-    unique: true,
-    default: 0,
-  }
 });
 
 const Post = mongoose.model("Post", postSchema);
