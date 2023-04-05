@@ -100,12 +100,12 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
-var count = 0
+
 //글 작성 요청
 app.post("/create", async (req, res) => {
   const { userId, title, content } = req.body;
 
-  count++
+
 
   const date = new Date();
   const year = date.getFullYear();
@@ -124,7 +124,6 @@ app.post("/create", async (req, res) => {
       content,
       user: findUser._id,
       newDate: `${year}.${month}.${day} ${hour}:${minute}`,
-      postNumber: count
     });
     await post.save();
     return res.status(201).json({ success: true, Message: "글 작성 성공" });
@@ -223,13 +222,12 @@ app.post("/duplication", async (req, res) => {
   }
 });
 
-var newcount = 0
+
 //댓글 작성 요청
 app.put("/createComment/:id", async (req, res) => {
 
   try {
 
-    newcount++
 
     const date = new Date();
     const year = date.getFullYear();
@@ -251,8 +249,7 @@ app.put("/createComment/:id", async (req, res) => {
     const newComment = {
       comment: comment,
       commentBy: commentBy,
-      commentNewDate: `${year}.${month}.${day} ${hour}:${minute}`,
-      commentNumber: newcount
+      commentNewDate: `${year}.${month}.${day} ${hour}:${minute}`
     };
 
     post.comments.push(newComment);
